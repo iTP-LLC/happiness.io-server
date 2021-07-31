@@ -11,17 +11,17 @@ import { CommentService } from './Comment'
 const context = () => ({
   userService: new UserService(),
   articleService: new ArticleService(),
-  commentService: new CommentService()
+  commentService: new CommentService(),
 })
 
 const server = new ApolloServer({
   schema,
   context,
   engine: {
-    apiKey: environment.engineApiKey
-  }
+    apiKey: environment.engineApiKey,
+  },
 })
 
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`)
 })
