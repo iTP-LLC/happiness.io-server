@@ -4,7 +4,7 @@ import { ApolloServer } from 'apollo-server'
 // internal
 import { environment } from './common/environment'
 import { schema } from './schema'
-import { UserService } from './User'
+import { UserService, ActionService } from './User'
 import { ArticleService } from './Article'
 import { CommentService } from './Comment'
 
@@ -12,6 +12,7 @@ const context = () => ({
   userService: new UserService(),
   articleService: new ArticleService(),
   commentService: new CommentService(),
+  actionService: new ActionService(),
 })
 
 const server = new ApolloServer({
