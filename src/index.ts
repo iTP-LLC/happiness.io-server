@@ -2,7 +2,7 @@
 import { ApolloServer } from 'apollo-server'
 
 // internal
-import { environment } from './common/environment'
+import { environment } from './common'
 import { schema } from './schema'
 import { UserService, ActionService } from './User'
 import { ArticleService } from './Article'
@@ -12,16 +12,16 @@ const context = () => ({
   userService: new UserService(),
   articleService: new ArticleService(),
   commentService: new CommentService(),
-  actionService: new ActionService(),
+  actionService: new ActionService()
 })
 
 const server = new ApolloServer({
   schema,
   context,
   engine: {
-    apiKey: environment.engineApiKey,
+    apiKey: environment.engineApiKey
   },
-  introspection: true, // allow introspection for now, disable before release
+  introspection: true // allow introspection for now, disable before release
 })
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {

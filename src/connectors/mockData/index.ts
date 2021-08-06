@@ -5,7 +5,7 @@ export const testSize = {
   user: 20,
   article: 100,
   comment: 300,
-  action: 50, // for each type of action
+  action: 50 // for each type of action
 }
 
 const createTestUser = (id: string) => ({
@@ -13,7 +13,7 @@ const createTestUser = (id: string) => ({
   displayName: randomText(2).join(' '),
   userName: randomText(2).join('-'),
   description: randomText(25).join(' '),
-  email: `${randomText(2).join('')}@${randomText(1)}.com`,
+  email: `${randomText(2).join('')}@${randomText(1)}.com`
 })
 
 const createTestComment = (id: string) => {
@@ -32,7 +32,7 @@ const createTestComment = (id: string) => {
     upvotes: 0, // rely on action table?
     downvotes: 0,
     mentionIds: randomIds(3, testSize.user),
-    parentId,
+    parentId
   }
 }
 
@@ -45,17 +45,14 @@ const createTestArticle = (id: string) => ({
   tags: randomText(3),
   upstreamId: randomIds(1, testSize.article, id)[0],
   downstreamIds: randomIds(5, testSize.article, id),
-  relatedArticleIds: randomIds(10, testSize.article, id),
-  MAT: Math.round(Math.random() * 100),
   timestamp: new Date().toISOString(),
   pinnedCommentIds: randomIds(3, testSize.comment),
-  subscriberIds: randomIds(10, testSize.user), // should be moved to action table
-  publishState: 'published',
+  publishState: 'published'
 })
 
 export const tables = {
-  user: sequentialIds(testSize.user).map((id) => createTestUser(id)),
-  article: sequentialIds(testSize.article).map((id) => createTestArticle(id)),
-  comment: sequentialIds(testSize.comment).map((id) => createTestComment(id)),
-  action: createTestActions(testSize),
+  user: sequentialIds(testSize.user).map(id => createTestUser(id)),
+  article: sequentialIds(testSize.article).map(id => createTestArticle(id)),
+  comment: sequentialIds(testSize.comment).map(id => createTestComment(id)),
+  action: createTestActions(testSize)
 }

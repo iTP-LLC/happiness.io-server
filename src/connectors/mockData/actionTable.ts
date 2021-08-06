@@ -1,5 +1,8 @@
 import { randomIds, randomRepeatIds } from './utils'
 import { userActions, votes } from '../../common/enums'
+import { enums } from '../../common'
+
+const { userActions, votes } = enums
 
 export const createTestActions = (testSize: {
   article: number

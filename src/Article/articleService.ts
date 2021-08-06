@@ -14,14 +14,21 @@ export class ArticleService extends BaseService {
       .load(html)('body')
       .text()
       .split(' ')
-      .filter((s) => s !== '').length
+      .filter(s => s !== '').length
 
   // TODO: replaced by actual dynamoDB api
   // start of db calls ->
-  findByAuthor = (id: Array<string>) =>
-    new Promise((resolve) =>
+  findByAuthor = (id: Array<string>) => {
+    return new Promise(resolve =>
       resolve(this.items.filter(({ authorId }) => id === authorId))
     )
+  }
+
+  countByAuthor = (id: Array<string>) =>
+    new Promise(resolve =>
+      resolve(this.items.filter(({ authorId }) => id === authorId).length)
+    )
+
   // <- end of db calls
 
   // TODO: replaced by actual IPFS api
