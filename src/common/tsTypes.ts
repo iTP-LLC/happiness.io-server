@@ -9,7 +9,7 @@ export type Context = {
   userService: InstanceType<typeof UserService>
 }
 export type ThirdPartyAccount = {
-  accountName: 'Facebook' | 'WeChat' | 'Google'
+  accountName: 'facebook' | 'wechat' | 'google'
   baseUrl: string
   token: string
 }
