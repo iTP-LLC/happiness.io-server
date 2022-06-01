@@ -52,7 +52,7 @@
     "normalize.css": "^7.0.0",
     "pinyin": "^2.8.3",
     "reselect": "^3.0.1",
-    "sharp": "^0.20.1",
+    "sharp": "^0.30.5",
     "typescript": "^3.1.6",
     "uuid": "^3.1.0",
     "validator": "^13.7.0",
